@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星空網站</title>
+    <title>你好</title>
     <style>
         /* 全域設定與背景 */
         body {
@@ -37,7 +37,6 @@
         }
 
         /* 函數用於生成隨機位置的星星 (使用 box-shadow) */
-        /* 這裡只是一個示範，更複雜的星空通常會用 JS 或更多圖層的 CSS */
         .star-field {
             width: 1px;
             height: 1px;
@@ -83,81 +82,6 @@
             opacity: 0.6;
             transform: rotate(45deg);
         }
-
-        /* 流星雨樣式與動畫 */
-        .shooting-star {
-            position: fixed;
-            /* 從右上角附近開始 */
-            top: 0; 
-            right: 0; /* 初始位置 */
-            width: 3px; /* 流星的寬度 */
-            height: 150px; /* 流星的長度，作為彗尾的一部分 */
-            /* 彗尾效果：頭部亮，尾部逐漸透明 */
-            background: linear-gradient(to bottom, 
-                        rgba(255, 255, 255, 1) 0%, /* 流星頭部最亮 */
-                        rgba(255, 255, 255, 0.8) 20%,
-                        rgba(255, 255, 255, 0) 100%); /* 流星尾部完全透明 */
-            transform-origin: top center; /* 讓旋轉點在流星的頂部 */
-            transform: rotate(45deg); /* 從右上到左中 */
-            opacity: 0; /* 預設隱藏 */
-            animation: shooting 8s infinite ease-in-out; /* 增加動畫時間讓流星更慢 */
-            z-index: 5;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7)); /* 輕微發光效果 */
-        }
-
-        /* 為了讓流星看起來像多條，可以使用多個 div 或調整動畫延遲 */
-        .shooting-star:nth-child(1) {
-            top: 5vh; /* 調整起始位置 */
-            right: 15vw;
-            animation-delay: 1s; /* 第一顆流星延遲 1 秒 */
-            animation-duration: 6s; /* 調整速度 */
-        }
-
-        .shooting-star:nth-child(2) {
-            top: 0vh; /* 調整起始位置 */
-            right: 5vw;
-            animation-delay: 4s; /* 第二顆流星延遲 4 秒 */
-            animation-duration: 7s;
-            height: 120px; /* 第二顆流星可以短一點 */
-        }
-        
-        .shooting-star:nth-child(3) {
-            top: 10vh; /* 調整起始位置 */
-            right: 30vw;
-            animation-delay: 7s; /* 第三顆流星延遲 7 秒 */
-            animation-duration: 5s;
-            width: 2px; /* 第三顆流星可以細一點 */
-        }
-        .shooting-star:nth-child(4) { /* 增加一個流星 */
-            top: 2vh;
-            right: 50vw;
-            animation-delay: 9s;
-            animation-duration: 6.5s;
-            height: 100px;
-            width: 2px;
-        }
-
-
-        @keyframes shooting {
-            0% {
-                transform: rotate(45deg) translateX(0) translateY(0); /* 初始位置 */
-                opacity: 0; /* 預設不可見 */
-            }
-            10% {
-                opacity: 1; /* 開始可見，流星出現 */
-            }
-            70% { /* 調整流星划過螢幕的時間點 */
-                transform: rotate(45deg) translateX(-70vw) translateY(70vh); /* 向左中方向移動 */
-                opacity: 1; /* 保持可見 */
-            }
-            80% {
-                opacity: 0; /* 開始消失 */
-                transform: rotate(45deg) translateX(-80vw) translateY(80vh); /* 繼續移動並消失 */
-            }
-            100% {
-                opacity: 0; /* 完全消失，等待下一次循環 */
-            }
-        }
     </style>
 </head>
 <body>
@@ -165,10 +89,7 @@
 
     <div class="moon"></div>
 
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div> <div class="stars">
+    <div class="stars">
         <div class="star-field"></div>
     </div>
 
