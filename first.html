@@ -3,13 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的第一個簡單網頁</title>
+    <title>夜晚星空網站</title>
+    <style>
+        /* 整體頁面樣式：設定為黑色背景以模擬夜晚 */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000; /* 純黑色背景 */
+            color: #FFFFFF; /* 白色文字 */
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* 隱藏超出視窗的內容，特別是流星 */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* 標題樣式 */
+        h1 {
+            font-size: 4em;
+            z-index: 10; /* 確保標題在星星和流星上方 */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* 讓標題有發光效果 */
+        }
+
+        /* 星星容器 */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* 讓星星不影響點擊 */
+            /* 創建隨機位置的小白點作為星星 */
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #eee, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 80px 10px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 100px 40px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 150px 90px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 180px 50px, #fff, rgba(0,0,0,0)),
+                /* 更多星星...這裡只列舉一小部分，您可以在瀏覽器中看到隨機分佈的星空效果 */
+                /* 為了模擬大量星星，我們使用多層背景圖 */
+                /* 小尺寸星 */
+                #fff;
+            /* 調整背景大小和重複方式來模擬星空 */
+            background-size: 
+                200px 200px, 
+                200px 200px,
+                100px 100px,
+                150px 150px,
+                100px 100px,
+                200px 200px;
+            opacity: 0.8;
+            animation: move-stars 100s linear infinite; /* 讓星空輕微移動 */
+        }
+        
+        @keyframes move-stars {
+            from { background-position: 0 0; }
+            to { background-position: 100% 100%; }
+        }
+
+        /* 流星樣式 - 使用多個 div 模擬流星 */
+        .shooting-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff); /* 流星尾巴 */
+            border-radius: 50%;
+            animation: meteor-shower 4s linear infinite;
+            opacity: 0;
+            z-index: 5;
+        }
+
+        /* 調整每個流星的延遲和持續時間，使其在不同時間出現 */
+        .shooting-star:nth-child(1) { top: 5%; left: 80%; animation-delay: 0s; }
+        .shooting-star:nth-child(2) { top: 15%; left: 20%; animation-delay: 2s; }
+        .shooting-star:nth-child(3) { top: 40%; left: 50%; animation-delay: 4s; }
+        .shooting-star:nth-child(4) { top: 70%; left: 10%; animation-delay: 6s; }
+        .shooting-star:nth-child(5) { top: 30%; left: 95%; animation-delay: 8s; }
+        .shooting-star:nth-child(6) { top: 60%; left: 45%; animation-delay: 10s; }
+
+
+        @keyframes meteor-shower {
+            0% {
+                transform: rotate(225deg) translateX(0); /* 從初始點開始 */
+                opacity: 1;
+            }
+            7% {
+                opacity: 1;
+            }
+            10% {
+                transform: rotate(225deg) translateX(250px); /* 劃過天空 */
+                opacity: 0;
+            }
+            100% {
+                opacity: 0; /* 消失並重新開始 */
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="stars"></div>
 
-    <h1>歡迎來到我的網站！</h1>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
 
-    <p>這是一個非常基礎的 HTML 網頁。您可以在這裡開始添加更多內容，例如圖片、連結、列表等等。</p>
+    <h1>Hello World</h1>
 
-    </body>
+</body>
 </html>
