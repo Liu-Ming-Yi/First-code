@@ -16,5 +16,5 @@
 
 | 檔案名稱 / 範例 | 內容簡述 | 使用的 AI 工具 |
 | :--- | :--- | :--- |
-<p align="center">[index.html](https://liu-ming-yi.github.io/First-code/Basic-Exercises/index.html)</p> | 基礎 HTML 結構與 `<h1>` 標題 | [AI：Gemini] |
+[index.html](https://liu-ming-yi.github.io/First-code/Basic-Exercises/index.html)| 基礎 HTML 結構與 `<h1>` 標題 | [AI：Gemini] |
 
