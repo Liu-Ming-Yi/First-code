@@ -1,10 +1,10 @@
 # 🤖 利用 AI 學習 HTML (Learning HTML with AI)
 
-> 透過 AI 工具 來創建和優化 HTML 基礎知識的學習過程。
+> 透過 AI 工具 來創建和優化 HTML
 
 ## 📖 簡單介紹 (Introduction)
 
-這個專案記錄了我如何透過 AI 模型（例如 Gemini, ChatGPT 等）作為輔助的工具，來學習、理解和實踐網頁開發中最基本的標記語言——HTML。
+這個專案記錄了我如何透過 AI 模型（例如 Gemini, ChatGPT 等）作為輔助的工具，來學習、理解和實踐網頁開發中最基本的標記語言 HTML。
 
 目標是探索 AI 在以下方面的潛力：
 1.  **程式碼生成與解釋**：讓 AI 撰寫 HTML 並解釋每個標籤的作用。
