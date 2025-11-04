@@ -2,66 +2,38 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 製作的隨機圖片更換器</title>
-    <style>
-        /* 圖片的樣式 (CSS) - 可以根據您的需求調整 */
-        #randomImage {
-            width: 500px; /* 設定寬度 */
-            height: 300px; /* 設定高度 */
-            object-fit: cover; /* 確保圖片填滿，不會變形 */
-            border: 5px solid #3498db; /* 增加邊框 */
-            border-radius: 10px; /* 圓角 */
-            transition: opacity 0.5s ease-in-out; /* 增加切換時的淡入淡出效果 */
-        }
-
-        .container {
-            text-align: center; /* 讓圖片居中 */
-            padding-top: 50px;
-        }
-    </style>
+    <title>定時更換圖片</title>
 </head>
 <body>
 
-    <div class="container">
-        <h1>✨ 隨機更換的 AI 圖片集</h1>
-        <img id="randomImage" src="placeholder.jpg" alt="隨機圖片">
-    </div>
+    <img id="rotatingImage" src="" alt="定時更換的圖片" style="width: 300px; height: auto;">
 
     <script>
-        // 1. 圖片清單：請將這裡的路徑替換成您自己的圖片網址或檔案名稱
-        // 如果您的圖片檔案名稱是 pic1.jpg, pic2.jpg, pic3.jpg, ...
-        const images = [
-            'pic1.jpg',
-            'pic2.jpg',
-            'pic3.jpg',
-            'https://picsum.photos/500/300?random=1', // 也可以使用線上的圖片服務
-            'https://picsum.photos/500/300?random=2'
-            // 您可以加入更多圖片網址
+        // 🚨 替換成您在步驟一取得的**圖片直接連結** //    (例如：raw.githubusercontent.com/.../image1.jpg)
+        const imageUrls = [
+            "https://drive.google.com/file/d/1Br-u3B_eciF0DPTn9CLd2PvDNRsKTX3T/view?usp=sharing",
+            "https://drive.google.com/file/d/1i5xOIksC40slH4cDyk2o5xhx7KSQA4LE/view?usp=drive_link",
+            // ... 可以加入更多圖片 URL
         ];
 
-        // 2. 取得 HTML 中的圖片元素
-        const imageElement = document.getElementById('randomImage');
+        let currentIndex = 0;
+        const imageElement = document.getElementById('rotatingImage');
+        const changeInterval = 5000; // 5000 毫秒 = 5 秒
 
-        // 3. 定義一個函式來隨機更換圖片
-        function changeRandomImage() {
-            // 隨機生成一個索引，範圍是 0 到 (圖片數量 - 1)
-            const randomIndex = Math.floor(Math.random() * images.length);
+        function changeImage() {
+            // 設定當前圖片
+            imageElement.src = imageUrls[currentIndex];
 
-            // 取得隨機選中的圖片路徑
-            const newImageSrc = images[randomIndex];
-
-            // 設置圖片元素的 src 屬性，圖片就會更新
-            imageElement.src = newImageSrc;
+            // 索引增加，如果超過陣列長度，則回到第一張 (0)
+            currentIndex = (currentIndex + 1) % imageUrls.length;
         }
 
-        // 4. 設定定時器：每隔 3000 毫秒 (即 3 秒) 執行一次 changeRandomImage 函式
-        const intervalTime = 3000; // 3000 毫秒 = 3 秒
-        setInterval(changeRandomImage, intervalTime);
+        // 頁面載入後先執行一次
+        changeImage(); 
 
-        // 5. 頁面載入時先執行一次，確保初始圖片顯示
-        window.onload = changeRandomImage;
+        // 設定定時器，每隔 5 秒 (5000ms) 呼叫一次 changeImage 函式
+        setInterval(changeImage, changeInterval);
+
     </script>
-
 </body>
 </html>
