@@ -1,6 +1,6 @@
 # 🤖 利用 AI 學習 HTML (Learning HTML with AI)
 
-> 透過 AI 工具 來創建和優化 HTML
+> 透過 AI 工具 來創建和優化 HTML 讓介面變得更好
 
 ## 📖 簡單介紹 (Introduction)
 
