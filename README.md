@@ -10,7 +10,7 @@
 1.  **程式碼生成與解釋**：讓 AI 撰寫 HTML 並且達到我想要的效果。
 2.  **主要目的**：利用 AI 協助完成小型 HTML 網頁的結構。
 
-## ✨ 學習成果 (Key Outcomes)
+## ✨ 學習成果 (Finished product display)
 
 以下是透過 AI 輔助所完成的練習清單：
 
