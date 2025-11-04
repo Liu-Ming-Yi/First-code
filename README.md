@@ -16,7 +16,4 @@
 
 | 檔案名稱 / 範例 | 內容簡述 | 使用的 AI 工具 |
 | :--- | :--- | :--- |
-| `hello_world.html` | 基礎 HTML 結構與 `<h1>` 標題 | [AI 工具名稱，例如：Gemini] |
-| `star_sky.html` | 帶有 CSS 動畫背景的星空網頁 | [AI 工具名稱，例如：Gemini] |
-| `form_example.html` | 包含輸入框、按鈕等元素的表單範例 | |
-| `semantic_web.html` | 練習使用 `<header>`, `<main>`, `<footer>` 等語義化標籤 | |
+| `index.html` | 基礎 HTML 結構與 `<h1>` 標題 | [AI：Gemini、ChatGPT] |
