@@ -14,9 +14,9 @@
 
 以下是透過 AI 輔助所完成的練習清單：
 
-| 檔案名稱 / 範例 | 內容簡述 | 使用的 AI 工具 |
+| 檔案名稱 / 範例 | 內容簡述 | 使用&查詢的工具 |
 | :--- | :--- | :--- |
 | [index.html](https://liu-ming-yi.github.io/First-code/Basic-Exercises/index.html)| 基礎 HTML 結構與 `<title>` 標題 | [AI：Gemini] |
 | [my-work.html](https://liu-ming-yi.github.io/First-code/images/my-work.Html)| 基礎 HTML 結構與 `<img> <title>` 語法 和 `width 和 height` 屬性 | [AI：Gemini] |
-| [color-change.html](https://liu-ming-yi.github.io/First-code/CSS/color-change.html)| 基礎 HTML 結構與 CSS 語法 `color: red;` 屬性 <br> HTML 對對符號非常嚴格（例如 style="color: red;" 引號、冒號、分號）<br>請確保所有標籤都是成對的<br>使用 style 屬性設定顏色是最快的方式，當您的樣式變多時<br>建議改用 <style> 標籤或外部 CSS 檔案，以保持程式碼整潔。| [AI：Gemini] |
+| [color-change.html](https://liu-ming-yi.github.io/First-code/CSS/color-change.html)| 基礎 HTML 結構與 CSS 語法 `color: red;` 屬性 <br> HTML 對對符號非常嚴格（例如 style="color: red;" 引號、冒號、分號）<br>請確保所有標籤都是成對的<br>使用 style 屬性設定顏色是最快的方式，當您的樣式變多時<br>建議改用 <style> 標籤或外部 CSS 檔案，以保持程式碼整潔。| [AI：Gemini]<br>谷歌 |
 
