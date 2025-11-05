@@ -17,5 +17,5 @@
 | 檔案名稱 / 範例 | 內容簡述 | 使用的 AI 工具 |
 | :--- | :--- | :--- |
 | [index.html](https://liu-ming-yi.github.io/First-code/Basic-Exercises/index.html)| 基礎 HTML 結構與 `<title>` 標題 | [AI：Gemini] |
-| [my-work.html](https://liu-ming-yi.github.io/First-code/images/my-work.Html)| 基礎 HTML 結構與 `<img> <title>` 和 width 和 height 屬性 語法 | [AI：Gemini] |
+| [my-work.html](https://liu-ming-yi.github.io/First-code/images/my-work.Html)| 基礎 HTML 結構與 `<img> <title>` 和 width 和 height 屬性 | [AI：Gemini] |
 
