@@ -3,66 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>產品比較 RWD 網頁</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>產品資料比較網頁</title>
+    <link rel="stylesheet" href="css/rwd_style.css">
 </head>
 <body>
 
-    <h1>產品比較範例</h1>
+    <h1>產品呈現方式比較</h1>
 
-    <!-- 上方傳統表格 -->
-    <section>
-        <h2>傳統表格呈現</h2>
-        <table id="productTable"></table>
-    </section>
+    <h2>一、傳統表格呈現 (非 RWD，固定每列 5 筆)</h2>
+    <table class="traditional-table" id="traditionalTable">
+        <thead>
+            <tr>
+                <th colspan="5">產品名稱</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
 
-    <!-- 下方 RWD 產品區塊 -->
-    <section>
-        <h2>RWD 自適應呈現</h2>
-        <div id="productGrid" class="product-grid"></div>
-    </section>
+    <h2>二、RWD 網格呈現 (寬螢幕 5 筆，窄螢幕自動縮減)</h2>
+    <div class="rwd-grid" id="rwdGrid">
+        </div>
 
     <script>
-        // 讀取 JSON 資料
-        fetch("json/products.json")
-            .then(response => response.json())
-            .then(data => {
-                createTable(data);
-                createGrid(data);
-            });
+        // 定義資料檔案路徑
+        const jsonFilePath = 'json/products.json';
+        const productsPerTraditionalRow = 5;
 
-        // 建立傳統表格
-        function createTable(products) {
-            const table = document.getElementById("productTable");
-            let html = "<tr>";
-            products.forEach((p, i) => {
-                html += `
-                    <td class="cell color-${(i % 5) + 1}">
-                        <h3>${p.name}</h3>
-                        <p>價格：$${p.price}</p>
-                        <p>${p.description}</p>
-                    </td>
-                `;
-                if ((i + 1) % 5 === 0) html += "</tr><tr>";
-            });
-            html += "</tr>";
-            table.innerHTML = html;
+        // 產品資料載入函式
+        async function loadProductData() {
+            try {
+                const response = await fetch(jsonFilePath);
+                if (!response.ok) {
+                    throw new Error(`HTTP 錯誤! 狀態: ${response.status}`);
+                }
+                const products = await response.json();
+                
+                renderTraditionalTable(products);
+                renderRwdGrid(products);
+
+            } catch (error) {
+                console.error('載入產品資料失敗:', error);
+                document.getElementById('traditionalTable').innerHTML = '<tr><td colspan="5">載入產品資料失敗。</td></tr>';
+                document.getElementById('rwdGrid').innerHTML = '<p>載入產品資料失敗。</p>';
+            }
         }
 
-        // 建立 RWD 產品方格
-        function createGrid(products) {
-            const grid = document.getElementById("productGrid");
-            products.forEach((p, i) => {
-                const div = document.createElement("div");
-                div.className = `product-item color-${(i % 5) + 1}`;
-                div.innerHTML = `
-                    <h3>${p.name}</h3>
-                    <p>價格：$${p.price}</p>
-                    <p>${p.description}</p>
+        // 渲染傳統表格
+        function renderTraditionalTable(products) {
+            const tableBody = document.getElementById('traditionalTable').querySelector('tbody');
+            tableBody.innerHTML = ''; // 清空現有內容
+
+            // 1. 產品名稱 (每列 5 筆)
+            let nameRow = '<tr>';
+            products.forEach((product, index) => {
+                nameRow += `<td>${product.name}</td>`;
+                if ((index + 1) % productsPerTraditionalRow === 0 && index !== products.length - 1) {
+                    nameRow += '</tr><tr>';
+                }
+            });
+            nameRow += '</tr>';
+
+            // 2. 產品價格 (每列 5 筆)
+            let priceRow = '<tr>';
+            products.forEach((product, index) => {
+                priceRow += `<td>${product.price}</td>`;
+                if ((index + 1) % productsPerTraditionalRow === 0 && index !== products.length - 1) {
+                    priceRow += '</tr><tr>';
+                }
+            });
+            priceRow += '</tr>';
+            
+            // 3. 產品規格 1 (每列 5 筆)
+            let spec1Row = '<tr>';
+            products.forEach((product, index) => {
+                spec1Row += `<td>${product.spec1}</td>`;
+                if ((index + 1) % productsPerTraditionalRow === 0 && index !== products.length - 1) {
+                    spec1Row += '</tr><tr>';
+                }
+            });
+            spec1Row += '</tr>';
+            
+            // 4. 產品規格 2 (每列 5 筆)
+            let spec2Row = '<tr>';
+            products.forEach((product, index) => {
+                spec2Row += `<td>${product.spec2}</td>`;
+                if ((index + 1) % productsPerTraditionalRow === 0 && index !== products.length - 1) {
+                    spec2Row += '</tr><tr>';
+                }
+            });
+            spec2Row += '</tr>';
+            
+            tableBody.innerHTML = nameRow + priceRow + spec1Row + spec2Row;
+        }
+
+        // 渲染 RWD 網格
+        function renderRwdGrid(products) {
+            const rwdGrid = document.getElementById('rwdGrid');
+            rwdGrid.innerHTML = ''; // 清空現有內容
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.classList.add('product-card');
+                
+                card.innerHTML = `
+                    <h4>${product.name}</h4>
+                    <p><strong>價格:</strong> ${product.price}</p>
+                    <p><strong>規格 1:</strong> ${product.spec1}</p>
+                    <p><strong>規格 2:</strong> ${product.spec2}</p>
                 `;
-                grid.appendChild(div);
+                rwdGrid.appendChild(card);
             });
         }
+
+        // 網頁載入完成後執行
+        document.addEventListener('DOMContentLoaded', loadProductData);
     </script>
 
 </body>
