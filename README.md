@@ -18,4 +18,5 @@
 | :--- | :--- | :--- |
 | [index.html](https://liu-ming-yi.github.io/First-code/Basic-Exercises/index.html)| 基礎 HTML 結構與 `<title>` 標題 | [AI：Gemini] |
 | [my-work.html](https://liu-ming-yi.github.io/First-code/images/my-work.Html)| 基礎 HTML 結構與 `<img> <title>` 語法 和 `width 和 height` 屬性 | [AI：Gemini] |
+| [color-change.html](https://liu-ming-yi.github.io/First-code/CSS/color-change.html)| 基礎 HTML 結構與 CSS 語法 `color: red;` 屬性 \n測試 | [AI：Gemini] |
 
