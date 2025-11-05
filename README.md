@@ -22,3 +22,4 @@
 | [Interactive.html](https://liu-ming-yi.github.io/First-code/JavaScript/Interactive.html)| 基礎 `HTML` 結構與 `<JavaScript>` 語法 | [AI：Gemini] |
 | [phone.json](https://liu-ming-yi.github.io/First-code/Json/phone.json)| 基礎 `JSON` 結構和語法<br>必須使用雙引號 `(")` 包裹。`例如："編號"`<br>鍵和值之間使用冒號 `(:)` 分隔。`例如："編號": "1"`<br>每個物件的最後一個鍵值對或陣列的最後一個元素後面不能有逗號 | [AI：Gemini] |
 
+# 持續更新中~請敬請期待 (ง๑ •̀_•́)ง
