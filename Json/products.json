@@ -1,12 +1,72 @@
 [
-    { "name": "產品A", "price": 1200, "description": "高品質電子產品A" },
-    { "name": "產品B", "price": 980, "description": "超值家電產品B" },
-    { "name": "產品C", "price": 1350, "description": "時尚設計產品C" },
-    { "name": "產品D", "price": 750, "description": "經濟實惠產品D" },
-    { "name": "產品E", "price": 1600, "description": "高端科技產品E" },
-    { "name": "產品F", "price": 890, "description": "入門款電子產品F" },
-    { "name": "產品G", "price": 1400, "description": "耐用家電產品G" },
-    { "name": "產品H", "price": 1100, "description": "輕巧型產品H" },
-    { "name": "產品I", "price": 1750, "description": "旗艦級產品I" },
-    { "name": "產品J", "price": 660, "description": "經典復刻產品J" }
+    {
+        "id": 1,
+        "name": "產品 A",
+        "price": "NT$1,000",
+        "spec1": "規格 1A",
+        "spec2": "規格 2A"
+    },
+    {
+        "id": 2,
+        "name": "產品 B",
+        "price": "NT$1,200",
+        "spec1": "規格 1B",
+        "spec2": "規格 2B"
+    },
+    {
+        "id": 3,
+        "name": "產品 C",
+        "price": "NT$900",
+        "spec1": "規格 1C",
+        "spec2": "規格 2C"
+    },
+    {
+        "id": 4,
+        "name": "產品 D",
+        "price": "NT$1,500",
+        "spec1": "規格 1D",
+        "spec2": "規格 2D"
+    },
+    {
+        "id": 5,
+        "name": "產品 E",
+        "price": "NT$800",
+        "spec1": "規格 1E",
+        "spec2": "規格 2E"
+    },
+    {
+        "id": 6,
+        "name": "產品 F",
+        "price": "NT$2,000",
+        "spec1": "規格 1F",
+        "spec2": "規格 2F"
+    },
+    {
+        "id": 7,
+        "name": "產品 G",
+        "price": "NT$1,100",
+        "spec1": "規格 1G",
+        "spec2": "規格 2G"
+    },
+    {
+        "id": 8,
+        "name": "產品 H",
+        "price": "NT$1,300",
+        "spec1": "規格 1H",
+        "spec2": "規格 2H"
+    },
+    {
+        "id": 9,
+        "name": "產品 I",
+        "price": "NT$1,600",
+        "spec1": "規格 1I",
+        "spec2": "規格 2I"
+    },
+    {
+        "id": 10,
+        "name": "產品 J",
+        "price": "NT$700",
+        "spec1": "規格 1J",
+        "spec2": "規格 2J"
+    }
 ]
