@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS 點擊四次移動按鈕練習</title>
+    <title>點擊測驗 - 隨機移動 JS 練習</title>
     <style>
-        /* CSS 樣式 */
+        /* CSS 樣式 (與前一個版本幾乎相同，為維持排版完整性保留) */
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -15,35 +16,47 @@
             background-color: #f0f0f0;
         }
 
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+        }
+
         /* 外層的框框 */
         #container {
-            width: 400px; /* 框框寬度 */
-            height: 300px; /* 框框高度 */
-            border: 3px solid #007bff; /* 藍色邊框 */
+            width: 400px;
+            height: 300px;
+            border: 3px solid #007bff;
             background-color: #ffffff;
-            position: relative; /* 讓內部的按鈕可以使用絕對定位 */
+            position: relative; 
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* 確保按鈕不會跑到框框外面 */
         }
 
         /* 要移動的按鈕 */
         #movingButton {
-            position: absolute; /* 絕對定位 */
-            top: 50%; /* 初始位置: 垂直置中 */
-            left: 50%; /* 初始位置: 水平置中 */
-            transform: translate(-50%, -50%); /* 確保按鈕中心點在定位點上 */
+            position: absolute;
+            /* 初始位置 */
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, -50%); 
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #28a745; /* 綠色背景 */
+            background-color: #28a745;
             color: white;
             border: none;
             border-radius: 5px;
-            transition: all 0.5s ease-in-out; /* 添加過渡效果，使移動更平滑 */
+            transition: all 0.4s ease-out; /* 調整過渡速度，讓隨機移動更具挑戰性 */
+            min-width: 120px; /* 確保文字改變時按鈕大小不會跳動太多 */
+            text-align: center;
         }
     </style>
 </head>
 <body>
+
+    <h1>點擊測驗 (隨機移動)</h1>
 
     <div id="container">
         <button id="movingButton">點擊我</button>
@@ -52,48 +65,53 @@
     <script>
         // JavaScript 邏輯
         const button = document.getElementById('movingButton');
-        const container = document.getElementById('container');
         let clickCount = 0; // 點擊計數器
 
-        // 定義按鈕在不同點擊次數下的新位置
-        // 這些值是相對於 #container 內部的百分比位置 (left 和 top)
-        const positions = [
-            { top: '10%', left: '80%' },  // 第 1 次點擊後的位置
-            { top: '80%', left: '10%' },  // 第 2 次點擊後的位置
-            { top: '50%', left: '50%' }   // 第 3 次點擊後的位置 (回到中心)
-        ];
+        /**
+         * 生成一個在指定範圍內的隨機百分比位置
+         * 範圍設為 10% 到 90%，以確保按鈕不會貼著邊緣或跑出框框
+         */
+        function getRandomPosition() {
+            // Math.random() 產生 0 到 1 之間的數
+            // 乘以 80 再加 10，範圍為 10 到 90
+            const randomPercent = Math.floor(Math.random() * 80) + 10;
+            return `${randomPercent}%`;
+        }
+
 
         // 綁定點擊事件
         button.addEventListener('click', function() {
             clickCount++; // 每次點擊增加計數
 
             if (clickCount <= 3) {
-                // 前三次點擊：移動按鈕
-                const newPosition = positions[clickCount - 1];
+                // 前三次點擊：移動按鈕到隨機位置
+                const newTop = getRandomPosition();
+                const newLeft = getRandomPosition();
 
                 // 應用新的位置
-                button.style.top = newPosition.top;
-                button.style.left = newPosition.left;
+                button.style.top = newTop;
+                button.style.left = newLeft;
                 
-                // 調整 transform 確保按鈕中心點對準新的定位點
-                // 為了讓它在第 3 次回到中心時能正確置中，這裡使用了三元運算符
-                button.style.transform = (clickCount === 3) ? 'translate(-50%, -50%)' : 'none'; 
+                // 移除 transform，因為隨機位置不需要置中
+                button.style.transform = 'none'; 
 
-                // 改變按鈕文字，提示使用者還要點擊幾次
-                button.textContent = `再點擊 ${4 - clickCount} 次`;
+                // 改變按鈕文字
+                button.textContent = `再點擊 ${4 - clickCount} 次 (隨機移動)`;
             } else if (clickCount === 4) {
                 // 第四次點擊：顯示成功訊息
                 
+                // 讓按鈕回到中心並放大
+                button.style.top = '50%';
+                button.style.left = '50%';
+                button.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                
                 // 改變按鈕樣式和文字
-                button.textContent = 'JS練習成功！';
-                button.style.backgroundColor = '#dc3545'; // 變紅色
+                button.textContent = '🎉 JS練習成功！🎉';
+                button.style.backgroundColor = '#dc3545';
                 button.style.cursor = 'default';
                 
                 // 移除事件監聽器，避免再點擊
                 button.removeEventListener('click', arguments.callee);
-
-                // 額外：可以增加一個動畫效果，例如放大
-                button.style.transform = 'scale(1.2)';
             }
         });
     </script>
