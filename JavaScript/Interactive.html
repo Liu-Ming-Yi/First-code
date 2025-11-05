@@ -32,6 +32,10 @@
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            display: flex; /* 為了讓成功後的內容可以垂直置中 */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         /* 要移動的按鈕 */
@@ -50,6 +54,49 @@
             transition: all 0.4s ease-out; 
             min-width: 120px;
             text-align: center;
+            z-index: 10; /* 確保它在最前面 */
+        }
+        
+        /* 成功後顯示的區域 */
+        #success-area {
+            display: none; /* 初始狀態隱藏 */
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 成功訊息文字 */
+        #success-message {
+            font-size: 24px;
+            color: #dc3545;
+            margin-bottom: 20px;
+            animation: pulse 1s infinite alternate; /* 增加一個閃爍動畫 */
+        }
+        
+        /* 成功後的選項按鈕樣式 */
+        .option-button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #replayButton {
+            background-color: #007bff; /* 藍色 */
+            color: white;
+        }
+
+        #returnButton {
+            background-color: #6c757d; /* 灰色 */
+            color: white;
+        }
+
+        /* 簡單的動畫效果 */
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
         }
     </style>
 </head>
@@ -59,13 +106,26 @@
 
     <div id="container">
         <button id="movingButton">點擊我</button>
+
+        <div id="success-area">
+            <div id="success-message">🎉 JS練習成功！🎉</div>
+            <button id="replayButton" class="option-button">重新遊玩</button>
+            <button id="returnButton" class="option-button">返回README</button>
+        </div>
     </div>
 
     <script>
         // JavaScript 邏輯
         const button = document.getElementById('movingButton');
+        const successArea = document.getElementById('success-area');
+        const replayButton = document.getElementById('replayButton');
+        const returnButton = document.getElementById('returnButton');
+        
         let clickCount = 0; 
-        const redirectURL = "https://liu-ming-yi.github.io/First-code/"; // 您提供的返回超連結
+        
+        // --- 更新為您提供的新網址 ---
+        const replayURL = "https://liu-ming-yi.github.io/First-code/JavaScript/Interactive.html"; 
+        const returnURL = "https://liu-ming-yi.github.io/First-code"; 
 
         /**
          * 生成一個在指定範圍內的隨機百分比位置 (10% 到 90%)
@@ -76,31 +136,28 @@
         }
 
         /**
-         * 處理遊戲成功的邏輯，並彈出確認框
+         * 處理遊戲成功的邏輯：隱藏移動按鈕，顯示選項按鈕
          */
         function handleSuccess() {
-            // 讓按鈕回到中心並放大顯示成功訊息
-            button.style.top = '50%';
-            button.style.left = '50%';
-            button.style.transform = 'translate(-50%, -50%) scale(1.3)';
-            button.textContent = '🎉 JS練習成功！🎉';
-            button.style.backgroundColor = '#dc3545';
-            button.style.cursor = 'default';
+            // 隱藏移動按鈕
+            button.style.display = 'none';
             
-            // 移除事件監聽器，避免再點擊
+            // 移除事件監聽器
             button.removeEventListener('click', handleButtonClick);
 
-            // --- 核心新增功能：彈出確認框 ---
-            // confirm() 會返回 true (確定) 或 false (取消)
-            const playAgain = confirm("恭喜您成功完成測驗！\n\n是否要再玩一次？ (按「確定」重玩，按「取消」返回)");
+            // 顯示成功區塊
+            successArea.style.display = 'block';
 
-            if (playAgain) {
-                // 使用者選擇「確定」 (再玩一次)：重新載入頁面
-                window.location.reload(); 
-            } else {
-                // 使用者選擇「取消」 (返回)：導向到指定的超連結
-                window.location.href = redirectURL;
-            }
+            // 綁定新的選項按鈕事件
+            replayButton.addEventListener('click', function() {
+                // 重新遊玩：導向到 Interactive.html
+                window.location.href = replayURL;
+            });
+            
+            returnButton.addEventListener('click', function() {
+                // 返回 README：導向到 First-code 根目錄
+                window.location.href = returnURL;
+            });
         }
 
         /**
