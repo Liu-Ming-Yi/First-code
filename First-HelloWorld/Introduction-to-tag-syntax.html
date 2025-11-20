@@ -64,6 +64,32 @@
             overflow-x: auto;
             margin-top: 10px;
         }
+
+        /* 【新增樣式】連結區塊 */
+        .link-section {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 30px;
+            border-top: 1px dashed #ccc;
+        }
+
+        .cta-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #e74c3c; /* 顯眼的紅色 */
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px rgba(231, 76, 60, 0.4);
+            font-size: 1.1em;
+        }
+
+        .cta-link:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -90,54 +116,4 @@
             <tr><th>標籤</th><th>語法範例</th><th>用途說明</th></tr>
             <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td><code>&lt;!DOCTYPE html&gt;</code></td><td>宣告文件為 HTML5 標準。</td></tr>
             <tr><td><code>&lt;html&gt;</code></td><td><code>&lt;html lang="zh-TW"&gt;</code></td><td>根元素，包含所有內容。</td></tr>
-            <tr><td><code>&lt;head&gt;</code></td><td><code>&lt;head&gt;...&lt;/head&gt;</code></td><td>包含網頁的不可見資訊（元數據）。</td></tr>
-            <tr><td><code>&lt;body&gt;</code></td><td><code>&lt;body&gt;...&lt;/body&gt;</code></td><td>包含網頁的所有可見內容。</td></tr>
-            <tr><td><code>&lt;meta&gt;</code></td><td><code>&lt;meta charset="UTF-8"&gt;</code></td><td>設定字符編碼，防止亂碼。</td></tr>
-            <tr><td><code>&lt;title&gt;</code></td><td><code>&lt;title&gt;你好&lt;/title&gt;</code></td><td>設定瀏覽器標籤頁上的標題。</td></tr>
-            <tr><td><code>&lt;style&gt;</code></td><td><code>&lt;style&gt;...&lt;/style&gt;</code></td><td>嵌入 CSS 樣式程式碼。</td></tr>
-        </table>
-
-        <h3>內容與容器標籤</h3>
-        <table>
-            <tr><th>標籤</th><th>語法範例</th><th>用途說明</th></tr>
-            <tr><td><code>&lt;h1&gt;</code></td><td><code>&lt;h1&gt;Hello World&lt;/h1&gt;</code></td><td>定義主標題，是頁面上顯示的核心文字。</td></tr>
-            <tr><td><code>&lt;div&gt;</code></td><td><code>&lt;div class="moon"&gt;</code></td><td>通用的區塊容器。在原始碼中用於創建 **月亮**、**星星層** (`stars`) 和 **星星陣列** (`star-field`)。</td></tr>
-        </table>
-    </div>
-
-    <div class="section">
-        <h2>🎨 關鍵 CSS 樣式與技巧 (Key CSS Techniques)</h2>
-
-        <h3>1. 夜空背景的實現</h3>
-        <p>使用了徑向漸變 (<code>radial-gradient</code>) 創造了由深到淺的星空效果：</p>
-        <div class="code-block">
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-        </div>
-
-        <h3>2. 星星的生成與動畫</h3>
-        <p>這是最巧妙的部分。程式碼沒有使用數百個 <code>&lt;div&gt;</code>，而是利用單一 <code>.star-field</code> 元素的 **多重 <code>box-shadow</code>** 來模擬大量隨機位置的星星。</p>
-        <div class="code-block">
-            /* 節錄 box-shadow 語法，每個座標代表一顆星星 */<br>
-            box-shadow: 10vw 10vh #fff, 20vw 30vh #fff, ...;
-        </div>
-        <p>星星的閃爍 (Twinkle) 是透過 CSS 關鍵幀動畫 (<code>@keyframes</code>) 實現的：</p>
-        <div class="code-block">
-            @keyframes twinkle {<br>
-            &nbsp;&nbsp;0% { opacity: 0.5; }<br>
-            &nbsp;&nbsp;100% { opacity: 1; }<br>
-            }<br>
-            <br>
-            animation: twinkle 3s infinite alternate; /* 應用動畫 */
-        </div>
-
-        <h3>3. 標題與月亮的光暈</h3>
-        <p>利用 **多重陰影** 創造發光效果，使標題和月亮在夜空中更加突出。</p>
-        <ul>
-            <li>**標題光暈 (Text Glow):** <code>text-shadow: 0 0 10px #fff, 0 0 20px #00f, ...;</code></li>
-            <li>**月亮光暈 (Moon Glow):** <code>box-shadow: 0 0 10px #fff, 0 0 20px #f9f9f9;</code></li>
-            <li>月亮上的陰影是透過 **偽元素** <code>.moon::after</code> 製作的。</li>
-        </ul>
-    </div>
-
-</body>
-</html>
+            <tr><td><code>&lt;head&gt;</code></td><td><code>&lt;head&gt;...&lt;/head&gt;</code></td><td>包含網頁的不可見資訊（元數據）。
